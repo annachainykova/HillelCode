@@ -22,7 +22,7 @@ public class Code {
     // Positive test-cases
     @Test
     public static void test1_isPhone() {
-        String testData = "0975156900";
+        String testData = "0985156900";
         boolean result = isPhone(testData);
         Assert.assertTrue(result, "Test 1");
     }
@@ -30,14 +30,14 @@ public class Code {
 
     @Test
     public static void test2_isPhone() {
-        String testData = "+380975156900";
+        String testData = "+380675156900";
         boolean result = isPhone(testData);
         Assert.assertTrue(result);
     }
 
     @Test
     public static void test3_isPhone() {
-        String testData = "(097)5156900";
+        String testData = "(097)5156907";
         boolean result = isPhone(testData);
         Assert.assertTrue(result);
     }

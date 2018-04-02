@@ -1,4 +1,3 @@
-
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -11,7 +10,7 @@ import java.awt.*;
 import java.awt.datatransfer.StringSelection;
 import java.awt.event.KeyEvent;
 
-public class Selenium {
+public class BoxCom {
 
     WebDriver driver;
 
@@ -40,45 +39,10 @@ public class Selenium {
         loginButton.click();
         //driver.manage().window().maximize();
     }
-//    @AfterTest
+    //    @AfterTest
 //    public void closeChrome(){
 //        driver.quit();
 //    }
-    @Test
-    public void test1() throws InterruptedException {
-
-        String url = "http://random.org/integers/";
-        driver.get(url);
-
-        Thread.sleep(1500);
-
-        WebElement minNumbers = driver.findElement(By.cssSelector("input[name='min']"));
-        String minNumbersString = minNumbers.getAttribute("value");
-        int min = Integer.parseInt(minNumbersString);
-
-
-        WebElement maxNumbers = driver.findElement(By.cssSelector("input[name='max']"));
-        String maxNumbersString = maxNumbers.getAttribute("value");
-        int max = Integer.parseInt(maxNumbersString);
-
-        WebElement number = driver.findElement(By.cssSelector("input[name='num']"));
-        number.clear();
-        number.sendKeys("1");
-
-
-        WebElement getNumbersButton = driver.findElement(By.cssSelector("input[value='Get Numbers']"));
-
-        getNumbersButton.click();
-
-        Thread.sleep(1500);
-        WebElement generatedNumbers = driver.findElement(By.cssSelector("pre[class='data']"));
-
-        String oneNumberSt = generatedNumbers.getText();
-        int oneNumber = Integer.parseInt(oneNumberSt.trim());
-        Assert.assertTrue(oneNumber>=min && oneNumber <=max);
-
-
-    }
 
     @Test
     public void test2() throws InterruptedException{
@@ -187,3 +151,5 @@ public class Selenium {
     }
 
 }
+
+
