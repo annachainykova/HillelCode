@@ -19,6 +19,7 @@ public class BoxCom {
     public void openChrome() {
         System.setProperty("webdriver.chrome.driver", "D:\\chromedriver.exe");
         driver = new ChromeDriver();
+        driver.manage().window().maximize();
         String boxUrl = "https://box.com/";
         driver.get(boxUrl);
 
