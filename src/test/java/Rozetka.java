@@ -7,13 +7,15 @@ import org.testng.annotations.AfterTest;
 import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Test;
 
+import java.util.List;
+
 public class Rozetka {
 
     WebDriver driver;
 
     @BeforeTest
     public void openChrome()  throws InterruptedException {
-        System.setProperty("webdriver.chrome.driver", "D:\\chromedriver.exe");
+        System.setProperty("webdriver.chrome.driver", "E:\\chromedriver.exe");
         driver = new ChromeDriver();
         driver.manage().window().maximize();
         String url = "https://rozetka.com.ua/";
@@ -32,17 +34,19 @@ public class Rozetka {
 
         WebElement searchBox = driver.findElement(By.xpath("//*[@id='rz-search']/form/div[1]/div[2]/input"));
         searchBox.sendKeys("iphone");
-
-        WebElement submitSearch = driver.findElement(By.xpath(".//*[@id='rz-search']/form/span/span/button"));
-        submitSearch.click();
+        searchBox.submit();
 
         Thread.sleep(1000);
 
-        WebElement firstElementOnPage = driver.findElement(By.xpath(".//*[@id='catalog_goods_block']/div/div[1]/div[1]/div/div[1]/div/div[4]/a"));
+        List<WebElement> catalogGoodBlock = driver.findElements(By.xpath(".//*[@id='catalog_goods_block']//*[@class='g-i-tile-i-title clearfix']//a"));
+        WebElement firstElementOnPage = catalogGoodBlock.get(0);
+
         String textOfFirstElement  = firstElementOnPage.getText();
+        //System.out.println(textOfFirstElement);
 
-        String toCheck = "Apple iPhone 6 32GB Space Gray";
+        String toCheck = "Apple iPhone";
 
-        Assert.assertTrue(textOfFirstElement.equals(toCheck));
+        Assert.assertTrue(textOfFirstElement.contains(toCheck));
+
     }
 }

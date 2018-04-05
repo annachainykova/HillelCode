@@ -17,10 +17,12 @@ public class BoxCom {
 
     @BeforeTest
     public void openChrome() {
-        System.setProperty("webdriver.chrome.driver", "D:\\chromedriver.exe");
+        System.setProperty("webdriver.chrome.driver", "E:\\chromedriver.exe");
         driver = new ChromeDriver();
+        driver.manage().window().maximize();
         String boxUrl = "https://box.com/";
         driver.get(boxUrl);
+
 
     }
 
@@ -37,7 +39,7 @@ public class BoxCom {
 
         WebElement login = driver.findElement(By.linkText("Login"));
         login.click();
-        Thread.sleep(2000);
+        Thread.sleep(3000);
 
         WebElement inputEmail = driver.findElement(By.cssSelector("input[name='login']"));
         inputEmail.sendKeys("michael.darra@mail.ru");
